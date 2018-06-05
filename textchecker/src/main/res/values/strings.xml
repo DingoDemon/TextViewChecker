@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TextChecker</string>
+    <string name="please_select">请选择</string>
+    <string name="please_input">请输入</string>
+</resources>

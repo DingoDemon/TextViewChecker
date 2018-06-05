@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">EditTextChecker</string>
+
+
+    <string name="name_hint">please input your name</string>
+
+    <string name="email_hint">please input your email</string>
+
+    <string name="phone_hint">please input your phone</string>
+
+    <string name="birth_hint">please select your birthday</string>
+
+    <string name="date_toast">please select Date</string>
+
+    <string name="empty_value">please finish your information</string>
 </resources>
