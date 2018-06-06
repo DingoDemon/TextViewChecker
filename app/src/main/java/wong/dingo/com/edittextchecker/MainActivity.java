@@ -7,9 +7,12 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.HashSet;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,20 +20,23 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.root)
+    LinearLayout root;
 
-    @CheckInfo(allowedEmpty = false, textName = "姓名", type = CheckInfo.Type.EditTextView)
+
+    @CheckInfo(allowedEmpty = false, textName = "姓名", type = CheckInfo.Type.EditTextView, priority = 99)
     @BindView(R.id.name_edit)
     EditText editTextName;
 
-    @CheckInfo(allowedEmpty = false, textName = "手机号", type = CheckInfo.Type.EditTextView)
+    @CheckInfo(allowedEmpty = false, textName = "手机号", type = CheckInfo.Type.EditTextView, priority = 98)
     @BindView(R.id.phone_edit)
     EditText editTextPhone;
 
-    @CheckInfo(allowedEmpty = false, textName = "邮箱", type = CheckInfo.Type.EditTextView)
+    @CheckInfo(allowedEmpty = false, textName = "邮箱", type = CheckInfo.Type.EditTextView, priority = 97)
     @BindView(R.id.email_edit)
     EditText editTextEmail;
 
-    @CheckInfo(allowedEmpty = false, toastResId = R.string.date_toast, type = CheckInfo.Type.TextView)
+    @CheckInfo(allowedEmpty = false, toastResId = R.string.date_toast, type = CheckInfo.Type.TextView, priority = 96)
     @BindView(R.id.birth_text)
     TextView textViewBirth;
 
@@ -67,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.commit_btn)
     void checkValue() {
-        Boolean finish = TextChecker.checkTextViewInActivity(MainActivity.this);
+        TextChecker textChecker = new TextChecker();
+        Boolean finish = textChecker.checkTextViews(MainActivity.this);
         Log.i("user finish his info :", finish.toString());
     }
 

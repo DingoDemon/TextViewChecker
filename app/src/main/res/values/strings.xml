@@ -13,4 +13,9 @@
     <string name="date_toast">please select Date</string>
 
     <string name="empty_value">please finish your information</string>
+
+
+
+    <string name="please_select">请选择</string>
+    <string name="please_input">请输入</string>
 </resources>

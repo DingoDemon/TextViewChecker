@@ -1,6 +1,7 @@
 package wong.dingo.com.edittextchecker;
 
 
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,13 +13,17 @@ public @interface CheckInfo {
 
     boolean allowedEmpty() default true;
 
-    int toastResId() default -1;
+    int toastResId() default PRESENT_VALUE;
 
     String textName() default "";
 
     Type type() default Type.TextView;
 
+    int priority() default PRESENT_VALUE;
+
     enum Type {TextView, EditTextView}
+
+    public static final int PRESENT_VALUE = -1;
 
 
 }
