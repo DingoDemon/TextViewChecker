@@ -1,11 +1,11 @@
-package wong.dingo.com.edittextchecker;
+package wong.dingo.com.textchecker;
 
 import java.lang.reflect.Field;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class MinFieldHeap<T extends Field> {
 
-    private LinkedList<Field> list = new LinkedList<>();
+    private ArrayList<Field> list = new ArrayList<>();
 
     public void insert(T t) {
         int size = list.size();
@@ -19,17 +19,20 @@ public class MinFieldHeap<T extends Field> {
         int parent = (start - 1) / 2;
         Field tmp = list.get(currentHole);
         while (currentHole > 0) {
-            if (list.get(parent).getAnnotation(CheckInfo.class).priority() > list.get(currentHole).getAnnotation(CheckInfo.class).priority()) {
+            if (value(list.get(parent)) < value(list.get(currentHole)))
+               break;
+             else {
                 list.set(currentHole, list.get(parent));
                 currentHole = parent;
                 parent = (parent - 1) / 2;
-            } else {
-                break;
             }
+            list.set(currentHole, tmp);
         }
-        list.set(currentHole, tmp);
-
     }
+
+
+
+
 
     public Field poll() {
         if (list.size() == 0)
@@ -73,7 +76,7 @@ public class MinFieldHeap<T extends Field> {
     public String toString() {
         String s = "";
         for (Field field : list) {
-            s = s.concat(field.getAnnotation(CheckInfo.class).priority() + "\n");
+            s = s.concat(field.getAnnotation(CheckInfo.class).position() + "\n");
         }
         return s;
     }
@@ -83,6 +86,6 @@ public class MinFieldHeap<T extends Field> {
     }
 
     public static int value(Field field) {
-        return field.getAnnotation(CheckInfo.class).priority();
+        return field.getAnnotation(CheckInfo.class).position();
     }
 }

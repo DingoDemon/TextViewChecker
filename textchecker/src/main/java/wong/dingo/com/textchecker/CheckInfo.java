@@ -1,4 +1,4 @@
-package wong.dingo.com.edittextchecker;
+package wong.dingo.com.textchecker;
 
 
 
@@ -19,7 +19,7 @@ public @interface CheckInfo {
 
     Type type() default Type.TextView;
 
-    int priority() default PRESENT_VALUE;
+    int position() default PRESENT_VALUE;
 
     enum Type {TextView, EditTextView}
 

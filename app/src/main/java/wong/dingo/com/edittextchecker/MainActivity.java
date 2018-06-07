@@ -4,13 +4,16 @@ import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.lang.reflect.Field;
 import java.util.Calendar;
 import java.util.HashSet;
 
@@ -24,19 +27,19 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout root;
 
 
-    @CheckInfo(allowedEmpty = false, textName = "姓名", type = CheckInfo.Type.EditTextView, priority = 99)
+//    @CheckInfo(allowedEmpty = false, textName = "姓名", type = CheckInfo.Type.EditTextView, priority = 111119)
     @BindView(R.id.name_edit)
     EditText editTextName;
 
-    @CheckInfo(allowedEmpty = false, textName = "手机号", type = CheckInfo.Type.EditTextView, priority = 98)
+//    @CheckInfo(allowedEmpty = true, textName = "手机号", type = CheckInfo.Type.EditTextView, priority = 48)
     @BindView(R.id.phone_edit)
     EditText editTextPhone;
 
-    @CheckInfo(allowedEmpty = false, textName = "邮箱", type = CheckInfo.Type.EditTextView, priority = 97)
+//    @CheckInfo(allowedEmpty = false, textName = "邮箱", type = CheckInfo.Type.EditTextView, priority = 5)
     @BindView(R.id.email_edit)
     EditText editTextEmail;
 
-    @CheckInfo(allowedEmpty = false, toastResId = R.string.date_toast, type = CheckInfo.Type.TextView, priority = 96)
+//    @CheckInfo(allowedEmpty = false, toastResId = R.string.date_toast, type = CheckInfo.Type.TextView, priority = 1)
     @BindView(R.id.birth_text)
     TextView textViewBirth;
 
@@ -73,9 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.commit_btn)
     void checkValue() {
-        TextChecker textChecker = new TextChecker();
-        Boolean finish = textChecker.checkTextViews(MainActivity.this);
-        Log.i("user finish his info :", finish.toString());
+
     }
 
 

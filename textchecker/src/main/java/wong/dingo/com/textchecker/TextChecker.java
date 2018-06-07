@@ -1,25 +1,17 @@
-package wong.dingo.com.edittextchecker;
+package wong.dingo.com.textchecker;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import android.util.Log;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
 
 
 public class TextChecker {
-    private FieldsHandler fieldsHandler;
+    private final FieldsHandler fieldsHandler;
 
 
     public TextChecker() {
@@ -32,13 +24,15 @@ public class TextChecker {
      */
     public boolean checkTextViews(Activity activity) {
         Class clazz = activity.getClass();
-        Field[] fields = clazz.getFields();
+        Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             if (field.isAnnotationPresent(CheckInfo.class)) {
                 fieldsHandler.collectAnnotationField(field);
             }
         }
+
         return fieldsHandler.check(activity);
+
     }
 
     public void checkTextViews(Activity activity, EmptyListener listener) {
@@ -59,7 +53,7 @@ public class TextChecker {
 
     class FieldsHandler {
 
-        private MinFieldHeap<Field> priorityQueue;
+        private final MinFieldHeap<Field> priorityQueue;
 
 
         FieldsHandler() {
@@ -80,7 +74,7 @@ public class TextChecker {
                         switch (checkInfo.type()) {
                             case TextView:
                                 TextView textView = (TextView) field.get(activity);
-                                if (TextUtils.isEmpty(textView.getText().toString()) && !checkInfo.allowedEmpty()) {
+                                if (TextUtils.isEmpty(textView.getText().toString())) {
                                     if (checkInfo.toastResId() != CheckInfo.PRESENT_VALUE) {
                                         Toast.makeText(activity, checkInfo.toastResId(), Toast.LENGTH_SHORT).show();
                                     } else {
@@ -91,8 +85,7 @@ public class TextChecker {
                                 break;
                             case EditTextView:
                                 EditText editText = (EditText) field.get(activity);
-                                Log.i("!!!",editText.getText().toString().length()+"");
-                                if (TextUtils.isEmpty(editText.getText().toString()) && !checkInfo.allowedEmpty()) {
+                                if (TextUtils.isEmpty(editText.getText().toString())) {
                                     if (checkInfo.toastResId() != CheckInfo.PRESENT_VALUE) {
                                         Toast.makeText(activity, checkInfo.toastResId(), Toast.LENGTH_SHORT).show();
                                     } else {
@@ -119,6 +112,7 @@ public class TextChecker {
                         TextView textView = (TextView) field.get(activity);
                         if (TextUtils.isEmpty(textView.getText().toString()))
                             listener.findEmpty(textView);
+                        return;
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }
