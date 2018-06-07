@@ -84,5 +84,9 @@ For Example：
 
 除了注解描述外，两句话就完成了对页面上TextView的非空检查。
 
+Jcenter 已发布，待审核成功后就可以使用了
+
+
+> compile 'Dingo.Demon:textchecker:1.1'
 
 
