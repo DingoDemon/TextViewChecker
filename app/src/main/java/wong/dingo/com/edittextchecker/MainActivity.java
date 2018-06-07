@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.email_edit)
     EditText editTextEmail;
 
-    @CheckInfo(allowedEmpty = true, toastResId = R.string.date_toast, type = CheckInfo.Type.TextView, position = 4)
+    @CheckInfo(allowedEmpty = false, toastResId = R.string.date_toast, type = CheckInfo.Type.TextView, position = 4)
     @BindView(R.id.birth_text)
     TextView textViewBirth;
 

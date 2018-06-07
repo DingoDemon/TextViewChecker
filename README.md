@@ -13,23 +13,26 @@ For Example：
 在对用户输入内容进行非空的时候，往往会产生一大批机械代码：
 
 
-*不是我写的，但是原来我去写，可能思路也是如此*
+> *不是我写的，这里没有喷点*
 
 ```java
  if (StringUtils.isNull(tvCity.getText().toString())) {
             showToast(R.string.input_city);
             return false;
         }
-        if (StringUtils.isNull(editDetailAddress.getText().toString())) {
+        if (StringUtils.isNull(editDetailAddress.getText().toString())){
             showToast(R.string.input_detail_address);
             return false;
         }
+        
+        //...无聊的重复.........
+        
+   
         if (StringUtils.isNull(tvMarrige.getText().toString())) {
             showToast(R.string.pick_marriage);
             return false;
         }
-。。。
-        if (!StringUtils.isEmail(editEmail.getText().toString().trim())) {
+        if (!StringUtils.isEmail(editEmail.getText().toString().trim()){
             showToast(R.string.input_valid_email_address);
             return false;
         }
@@ -57,7 +60,7 @@ For Example：
     @BindView(R.id.name_edit)
     EditText editTextName;
 
-    @CheckInfo(allowedEmpty = true, textName = "手机号", type = CheckInfo.Type.EditTextView, position = 2)
+    @CheckInfo(allowedEmpty = false, textName = "手机号", type = CheckInfo.Type.EditTextView, position = 2)
     @BindView(R.id.phone_edit)
     EditText editTextPhone;
 
@@ -79,7 +82,7 @@ For Example：
     }
 ```    
 
-
+除了注解描述外，两句话就完成了对页面上TextView的非空检查。
 
 
 
