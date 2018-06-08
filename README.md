@@ -48,7 +48,7 @@ For Example：
 
 这样的代码逻辑对于我个人来说，完全是灾难。em...真的很讨厌面向(command+)c(command+)v编程。
 
-想了想，借鉴了ButterKnife的思路，可以在定义输入栏目的时候，就给它加上注解,最后统一检查注解和元素是否吻合就好了。
+想了想，借鉴了ButterKnife的思路，可以在定义输入栏目的时候，就给它加上注解,最后统一检查注解和栏目是否吻合就好了。
 
 
 定义了5个注解元素：
@@ -90,7 +90,7 @@ For Example：
     }
 ```    
 
-除了注解描述外，两句话就完成了对页面上TextView的非空检查。
+除了注解描述外，两句话就完成了对页面上TextViews的非空检查。
 
 
 #### *I hope it will help you write less do more*
