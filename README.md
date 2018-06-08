@@ -1,6 +1,6 @@
 # TextViewChecker
 
-_一个简单的想法_
+## _一个简单的想法_
 
 额，最近工作一两年都是呆在从事互金行业里的。采集用户信息是风控环节中非常重要的一环。所以，App开发中存在着大量用户信息填写表单的页面：
 
@@ -84,9 +84,11 @@ For Example：
 
 除了注解描述外，两句话就完成了对页面上TextView的非空检查。
 
-Jcenter 已发布，待审核成功后就可以使用了
+Jcenter 已发布
 
+```Groovy
+compile 'Dingo.Demon:textchecker:1.1'
+```
 
-> compile 'Dingo.Demon:textchecker:1.1'
-
+I hope it will help you write less do more
 
