@@ -1,6 +1,14 @@
-# TextViewChecker
 
-## _一个简单的想法_
+
+# _一个简单的想法_
+
+
+Jcenter 已发布
+
+```Groovy
+compile 'Dingo.Demon:textchecker:1.1'
+```
+
 
 额，最近工作一两年都是呆在从事互金行业里的。采集用户信息是风控环节中非常重要的一环。所以，App开发中存在着大量用户信息填写表单的页面：
 
@@ -10,7 +18,7 @@ For Example：
 
 
 
-在对用户输入内容进行非空的时候，往往会产生一大批机械代码：
+在对用户输入内容进行非空检查的时候，往往会产生一大批腊鸡代码：
 
 
 > *不是我写的，这里没有喷点*
@@ -38,9 +46,9 @@ For Example：
         }
 ```
 
-这样的代码逻辑对于我个人来说，完全是灾难。em...真的很讨厌面向cv编程。
+这样的代码逻辑对于我个人来说，完全是灾难。em...真的很讨厌面向(command+)c(command+)v编程。
 
-想了想，借鉴了ButterKnife的思路，可以在定义输入栏目的时候，就给它加上注解,最后统一检查就好了。
+想了想，借鉴了ButterKnife的思路，可以在定义输入栏目的时候，就给它加上注解,最后统一检查注解和元素是否吻合就好了。
 
 
 定义了5个注解元素：
@@ -84,11 +92,6 @@ For Example：
 
 除了注解描述外，两句话就完成了对页面上TextView的非空检查。
 
-Jcenter 已发布
 
-```Groovy
-compile 'Dingo.Demon:textchecker:1.1'
-```
-
-I hope it will help you write less do more
+#### *I hope it will help you write less do more*
 
